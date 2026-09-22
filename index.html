@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제재 정책 변경 안내 · 고객센터 공유</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F7FA; --card:#FFFFFF; --ink:#1A2130; --ink-2:#54607A; --ink-3:#8B97AD;
+    --line:#E4E9F1; --line-2:#CDD5E2;
+    --sell:#0F766E; --sell-bg:#E6F2F0; --sell-bd:#BFDED8;
+    --buy:#B45309; --buy-bg:#FBF0E1; --buy-bd:#ECD5B7;
+    --stop:#B4231F; --stop-bg:#FBE9E8; --stop-bd:#F0CBC9;
+    --mono:ui-monospace,"SF Mono",monospace;
+    --sans:"42dot Sans",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.72;
+       word-break:keep-all;-webkit-font-smoothing:antialiased}
+
+  .shell{display:grid;grid-template-columns:236px minmax(0,1fr);max-width:1120px;margin:0 auto}
+  nav{position:sticky;top:0;align-self:start;height:100vh;padding:34px 20px;border-right:1px solid var(--line);overflow-y:auto}
+  nav .brand{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--buy);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+  nav .nt{font-size:15px;font-weight:800;line-height:1.35;margin-bottom:24px}
+  nav a{display:block;font-size:13.5px;color:var(--ink-3);text-decoration:none;padding:9px 12px;border-radius:9px;font-weight:600;
+        border-left:2px solid transparent;transition:all .15s;margin-bottom:3px;cursor:pointer}
+  nav a:hover{color:var(--ink);background:#fff}
+  nav a.active{color:var(--buy);background:var(--buy-bg);border-left-color:var(--buy)}
+  nav a .qn{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-right:7px}
+  nav a.active .qn{color:var(--buy)}
+
+  main{padding:0 clamp(24px,5vw,56px)}
+  section{padding:46px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}
+  section:last-of-type{border-bottom:none}
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--buy);letter-spacing:.04em;margin-bottom:6px}
+  h2{font-size:clamp(20px,2.6vw,24px);margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
+  .sub{color:var(--ink-2);font-size:14.5px;margin:0 0 20px}
+  h3{font-size:15px;font-weight:800;margin:24px 0 9px}
+  p{margin:0 0 12px;font-size:14.5px}
+  strong{font-weight:700}
+
+  header.top{padding:52px 0 32px;border-bottom:1px solid var(--line)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11.5px;color:var(--buy);background:var(--buy-bg);
+       border:1px solid var(--buy-bd);padding:5px 11px;border-radius:999px;margin-bottom:18px;font-weight:700}
+  h1{font-size:clamp(23px,3.1vw,31px);line-height:1.26;font-weight:800;letter-spacing:-.02em;margin:0 0 16px}
+  .lede{font-size:clamp(14.5px,1.8vw,16px);color:var(--ink-2);max-width:80ch;margin:0}
+  .lede b{color:var(--ink);font-weight:700}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .meta b{color:var(--ink-2);font-weight:600}
+
+  /* AS-IS / TO-BE 표 */
+  .cmp{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:8px 0}
+  .cmp th,.cmp td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  .cmp thead th{font-size:12.5px;font-weight:700;background:#FAFBFD;color:var(--ink-2)}
+  .cmp thead th.asis{color:var(--ink-3)} .cmp thead th.tobe{color:var(--buy);background:#FCF7EF}
+  .cmp tbody tr:last-child td{border-bottom:none}
+  .cmp td.label{font-weight:700;width:150px;background:#FBFCFD}
+  .cmp td.tobe{background:#FEFBF6}
+  .cmp td.tobe b{color:var(--buy)}
+  .cmp .strike{color:var(--ink-3);text-decoration:line-through}
+
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
+  .badge.sell{color:var(--sell);background:var(--sell-bg)}
+  .badge.stop{color:var(--stop);background:var(--stop-bg)}
+  .badge.none{color:var(--ink-3);background:#EEF1F5}
+
+  .note{background:var(--card);border:1px dashed var(--line-2);border-radius:11px;padding:14px 17px;font-size:13.5px;color:var(--ink-2);margin:14px 0}
+  .note b{color:var(--ink)}
+  .note.warn{border-style:solid;border-color:var(--buy-bd);background:var(--buy-bg)} .note.warn b{color:var(--buy)}
+
+  /* Q&A */
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 19px;margin-bottom:10px}
+  .qa .q{font-size:14.5px;font-weight:800;display:flex;gap:8px;margin-bottom:7px}
+  .qa .q .qi{color:var(--buy);font-family:var(--mono);font-weight:800;flex-shrink:0}
+  .qa .a{font-size:14px;color:var(--ink-2);padding-left:22px;position:relative}
+  .qa .a .ai{position:absolute;left:0;color:var(--sell);font-family:var(--mono);font-weight:800}
+  .qa .a b{color:var(--ink)}
+
+  .pending{background:#FBFCFD;border:1px solid var(--line);border-radius:12px;padding:20px 22px;text-align:center;color:var(--ink-3);margin-top:8px}
+  .pending .pi{font-size:26px;opacity:.5;margin-bottom:8px}
+  .pending .pt{font-size:14px;font-weight:700;color:var(--ink-2)}
+  .pending .pd{font-size:13px;margin-top:4px}
+
+  footer{padding:30px 0 60px;color:var(--ink-3);font-family:var(--mono);font-size:11.5px}
+  footer .l{height:1px;background:var(--line);margin-bottom:18px}
+
+  @media(max-width:840px){
+    .shell{grid-template-columns:1fr}
+    nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:18px 22px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+    nav .brand,nav .nt{width:100%} nav .nt{margin-bottom:10px}
+    nav a{padding:6px 10px;font-size:12.5px} nav a.active{border-left-color:transparent}
+    .cmp td.label{width:auto}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <nav id="toc">
+    <div class="brand">CS 공유</div>
+    <div class="nt">제재 정책 변경 안내</div>
+    <a data-target="#overview"><span class="qn">01</span>개요</a>
+    <a data-target="#type"><span class="qn">02</span>제재 구분 변경</a>
+    <a data-target="#userview"><span class="qn">03</span>유저 화면 변경</a>
+    <a data-target="#admin"><span class="qn">04</span>어드민 화면 변경</a>
+    <a data-target="#qna"><span class="qn">05</span>문의 응대</a>
+    <a data-target="#notice"><span class="qn">06</span>참고사항</a>
+  </nav>
+
+  <main>
+    <header class="top">
+      <span class="tag">고객센터 공유 · 적용 예정</span>
+      <h1>운영제재 정책 변경 안내</h1>
+      <p class="lede">운영제재를 받은 경우에도 <b>구매 기능(결제·신규 대화)은 이용할 수 있도록</b> 정책이 변경됩니다. 제재 사유가 대부분 판매(상품 등록) 관련인 점을 반영해, <b>위반한 범위(판매)만 제한</b>하는 방향입니다. 단, 구매가 위반 수단인 일부 유형은 기존과 동일하게 판매·구매 모두 제한합니다.</p>
+      <div class="meta">
+        <span><b>적용 시점</b> 26.10 예정</span>
+        <span><b>대상</b> 운영제재 기간제 제재</span>
+        <span><b>담당</b> SCTS</span>
+      </div>
+    </header>
+
+    <!-- 01 개요 -->
+    <section id="overview">
+      <div class="kicker">01 · 개요</div>
+      <h2>무엇이 바뀌나요</h2>
+      <p class="sub">핵심은 “제재 = 무조건 전체 제한”에서 “위반한 범위만 제한”으로 바뀌는 것입니다.</p>
+      <table class="cmp">
+        <thead><tr><th class="label">구분</th><th class="asis">AS-IS (현재)</th><th class="tobe">TO-BE (변경 후)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="label">운영제재 시</td>
+            <td>판매·구매 <strong>모두 제한</strong></td>
+            <td class="tobe">위반 성격에 따라 <b>판매만 제한</b> 또는 판매·구매 제한</td>
+          </tr>
+          <tr>
+            <td class="label">제한 기준</td>
+            <td>유형 구분 없이 일괄 전체 제한</td>
+            <td class="tobe"><b>유형별 차단 범위</b>를 나눠 적용</td>
+          </tr>
+          <tr>
+            <td class="label">기존 제재자</td>
+            <td>-</td>
+            <td class="tobe">배포 시점에 <b>소급 적용</b> (활성 제재자도 구매 열림)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 02 제재 구분 -->
+    <section id="type">
+      <div class="kicker">02 · 제재 구분 변경</div>
+      <h2>제재가 “판매만 제한 / 전체 제한”으로 나뉩니다</h2>
+      <p class="sub">기존에는 모두 “이용정지”였으나, 앞으로는 위반 유형에 따라 제한 범위가 나뉩니다.</p>
+      <table class="cmp">
+        <thead><tr><th class="label">제재 구분</th><th>제한 범위</th><th>해당 유형 (예)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="label"><span class="badge sell">판매제한</span></td>
+            <td><strong>판매만 제한</strong> · 구매·찜은 이용 가능</td>
+            <td>거래금지품목, 허가증확인항목, 지재권 침해 등 (대부분)</td>
+          </tr>
+          <tr>
+            <td class="label"><span class="badge stop">이용정지</span></td>
+            <td><strong>판매·구매 모두 제한</strong></td>
+            <td>비매너, 안전결제 회피(구매자) 등</td>
+          </tr>
+          <tr>
+            <td class="label"><span class="badge stop">무기한·영구</span></td>
+            <td>판매·구매 모두 제한</td>
+            <td>사기, 분쟁 해결 비협조 등</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note"><b>핵심:</b> 제재 사유의 약 89%가 거래금지품목 등 <b>판매 관련 위반</b>입니다. 이 경우 구매를 제한할 근거가 없어 <b>판매제한(판매만 막힘)</b>으로 전환합니다. 비매너·안전결제 회피처럼 <b>구매도 위반 수단</b>인 유형만 이용정지(전체 제한)를 유지합니다.</div>
+    </section>
+
+    <!-- 03 유저 화면 -->
+    <section id="userview">
+      <div class="kicker">03 · 유저 화면 변경</div>
+      <h2>유저가 보는 화면·문구</h2>
+      <p class="sub">‘내 상점 제재내역’ 화면과 제재 알림 문구가 제한 범위에 맞게 정리됩니다.</p>
+      <table class="cmp">
+        <thead><tr><th class="label">항목</th><th class="asis">AS-IS</th><th class="tobe">TO-BE</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="label">헤드라인 문구<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">(판매만 제한 시)</span></td>
+            <td class="strike">{n}일간 이용이 제한되었어요.</td>
+            <td class="tobe"><b>{n}일간 판매가 제한되었어요.</b></td>
+          </tr>
+          <tr>
+            <td class="label">범위 안내</td>
+            <td>없음</td>
+            <td class="tobe"><b>“찜·구매는 평소처럼 이용 가능”</b> 안내 추가</td>
+          </tr>
+          <tr>
+            <td class="label">상점명 앞 표시</td>
+            <td>(일시정지){상점명}</td>
+            <td class="tobe">판매만 제한: <b>(판매제한)</b> / 전체 제한: (일시정지)</td>
+          </tr>
+          <tr>
+            <td class="label">과거 제재내역</td>
+            <td>탭 3개 (운영제재·판매제한·프로상점)</td>
+            <td class="tobe"><b>하나로 통합</b> (시간순 정렬)</td>
+          </tr>
+          <tr>
+            <td class="label">알림 문구 톤</td>
+            <td class="strike">…자동 탐지되었습니다 / 행위</td>
+            <td class="tobe"><b>…확인되었어요</b> (부드러운 안내 톤)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 04 어드민 화면 (영역만) -->
+    <section id="admin">
+      <div class="kicker">04 · 어드민 화면 변경</div>
+      <h2>어드민(운영자) 처리 화면</h2>
+      <p class="sub">제재 처리·조회 화면도 제한 범위에 맞게 변경될 예정입니다.</p>
+      <table class="cmp">
+        <thead><tr><th class="label">항목</th><th class="asis">AS-IS</th><th class="tobe">TO-BE</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="label">제재 카테고리 관리</td>
+            <td>제한 범위 구분 없음</td>
+            <td class="tobe">유형별 <b>차단 범위(판매 / 판매+구매) 설정</b> 추가</td>
+          </tr>
+          <tr>
+            <td class="label">상점 제재내역 조회</td>
+            <td>제한 기능 표시 없음</td>
+            <td class="tobe"><b>제한기능 컬럼</b> 추가 (판매 / 판매+구매)</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pending">
+        <div class="pi">🖥️</div>
+        <div class="pt">변경 화면 이미지</div>
+        <div class="pd">실제 화면은 확정 후 추가 예정입니다.</div>
+      </div>
+    </section>
+
+    <!-- 05 Q&A -->
+    <section id="qna">
+      <div class="kicker">05 · 문의 응대</div>
+      <h2>문의 응대 가이드</h2>
+      <p class="sub">변경 후 예상되는 문의와 응대 방향입니다.</p>
+
+      <div class="qa">
+        <div class="q"><span class="qi">Q.</span>제재를 받았는데 왜 구매는 되나요?</div>
+        <div class="a"><span class="ai">A.</span>정상입니다. 이번 변경으로 <b>판매 위반은 판매만 제한하고 구매는 이용 가능</b>하도록 바뀌었습니다.</div>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="qi">Q.</span>판매제한 상태인데 찜·구매가 안 됩니다.</div>
+        <div class="a"><span class="ai">A.</span>판매제한이면 찜·구매는 <b>이용 가능한 것이 정상</b>입니다. 이용이 안 되는 경우 담당팀 확인이 필요합니다.</div>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="qi">Q.</span>다른 사람은 구매가 되는데 저는 안 됩니다.</div>
+        <div class="a"><span class="ai">A.</span>위반 유형에 따라 제한 범위가 다릅니다. <b>비매너·안전결제 회피 등은 구매도 제한</b>되며, 거래금지품목 등은 판매만 제한됩니다.</div>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="qi">Q.</span>무기한 제재는 언제 해제되나요?</div>
+        <div class="a"><span class="ai">A.</span>무기한은 정해진 해제일이 없습니다. <b>이의제기</b>를 통해 검토가 진행됩니다.</div>
+      </div>
+    </section>
+
+    <!-- 06 참고 -->
+    <section id="notice">
+      <div class="kicker">06 · 참고사항</div>
+      <h2>운영 시 참고</h2>
+      <div class="note warn"><b>소급 적용 안내</b> — 배포 시점에 <b>기존에 제재 중인 유저도 한꺼번에 구매가 열립니다.</b> 이에 따라 “갑자기 구매가 된다”는 문의가 일시적으로 늘 수 있으며, 이는 정상 동작입니다.</div>
+      <table class="cmp">
+        <thead><tr><th class="label">항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="label">적용 시점</td><td>26.10 예정 (제재 구분·문구·화면 정리 함께 적용)</td></tr>
+          <tr><td class="label">적용 대상</td><td>운영제재 <b>기간제 제재</b> (무기한·영구는 기존과 동일하게 전체 제한)</td></tr>
+          <tr><td class="label">문구 변경</td><td>제재 알림·상점 표시 문구가 제한 범위에 맞게 변경</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <div class="l"></div>
+      운영제재 정책 변경 안내 · 고객센터 공유용 · SCTS / T&amp;S<br>
+      상세 정책 및 요건은 기획서(specdoc) 참조
+    </footer>
+  </main>
+</div>
+
+<script>
+  const links=[...document.querySelectorAll('#toc a[data-target]')];
+  const map=links.map(a=>({a,sec:document.querySelector(a.getAttribute('data-target'))})).filter(m=>m.sec);
+  links.forEach(a=>a.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const sec=document.querySelector(a.getAttribute('data-target'));
+    if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+  function spy(){
+    const line=120; let cur=map[0];
+    for(const m of map){ if(m.sec.getBoundingClientRect().top<=line) cur=m; }
+    if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4) cur=map[map.length-1];
+    links.forEach(l=>l.classList.remove('active'));
+    if(cur)cur.a.classList.add('active');
+  }
+  let tick=false;
+  addEventListener('scroll',()=>{ if(!tick){requestAnimationFrame(()=>{spy();tick=false});tick=true;} },{passive:true});
+  spy();
+</script>
+</body>
+</html>
