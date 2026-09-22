@@ -142,6 +142,11 @@
             <td class="tobe"><b>유형별 차단 범위</b>를 나눠 적용</td>
           </tr>
           <tr>
+            <td class="label">그룹 간 제재</td>
+            <td>한 그룹으로 제재 중이면 <strong>다른 그룹은 제재 불가</strong></td>
+            <td class="tobe">그룹별로 <b>각각 제재 가능</b> (예: 운영정책위반 제재 중에도 거래매너 제재 가능)</td>
+          </tr>
+          <tr>
             <td class="label">기존 제재자</td>
             <td>-</td>
             <td class="tobe">배포 시점에 <b>소급 적용</b> (활성 제재자도 구매 열림)</td>
@@ -219,19 +224,19 @@
     <section id="admin">
       <div class="kicker">04 · 어드민 화면 변경</div>
       <h2>어드민(운영자) 처리 화면</h2>
-      <p class="sub">제재 처리·조회 화면도 제한 범위에 맞게 변경될 예정입니다.</p>
+      <p class="sub">고객센터에서 사용하는 화면 중 2가지가 변경될 예정입니다.</p>
       <table class="cmp">
         <thead><tr><th class="label">항목</th><th class="asis">AS-IS</th><th class="tobe">TO-BE</th></tr></thead>
         <tbody>
           <tr>
-            <td class="label">제재 카테고리 관리</td>
-            <td>제한 범위 구분 없음</td>
-            <td class="tobe">유형별 <b>차단 범위(판매 / 판매+구매) 설정</b> 추가</td>
+            <td class="label">① 상점 제재내역 조회</td>
+            <td>제한 기능 표시 없음</td>
+            <td class="tobe"><b>제한기능 컬럼 추가</b> (판매 / 판매+구매)로 어떤 범위가 막혔는지 확인 가능</td>
           </tr>
           <tr>
-            <td class="label">상점 제재내역 조회</td>
-            <td>제한 기능 표시 없음</td>
-            <td class="tobe"><b>제한기능 컬럼</b> 추가 (판매 / 판매+구매)</td>
+            <td class="label">② 제재 처리 시 화면(UI)</td>
+            <td>이미 제재 중인 유형도 다시 선택 가능</td>
+            <td class="tobe">이미 <b>제재 진행 중인 그룹의 유형은 비활성 처리</b> → 자동 설정 상태에서 다른 유형만 제재 가능 (중복 제재 방지)</td>
           </tr>
         </tbody>
       </table>
@@ -240,6 +245,7 @@
         <div class="pt">변경 화면 이미지</div>
         <div class="pd">실제 화면은 확정 후 추가 예정입니다.</div>
       </div>
+      <div class="note"><b>참고 · 그룹 간 제재 정책 변경</b> — 기존에는 한 그룹으로 제재 중이면 다른 그룹 유형을 제재할 수 없었으나, 앞으로는 <b>그룹별로 각각 제재할 수 있습니다.</b> (예: 운영정책위반으로 제재 중인 상태에서도 거래매너 제재 가능) 단, <b>같은 그룹 안의 유형은 진행 중이면 비활성 처리</b>되어 중복 제재되지 않습니다.</div>
     </section>
 
     <!-- 05 Q&A -->
@@ -270,7 +276,7 @@
     <section id="notice">
       <div class="kicker">06 · 참고사항</div>
       <h2>운영 시 참고</h2>
-      <div class="note warn"><b>소급 적용 안내</b> — 배포 시점에 <b>기존에 제재 중인 유저도 한꺼번에 구매가 열립니다.</b> 이에 따라 “갑자기 구매가 된다”는 문의가 일시적으로 늘 수 있으며, 이는 정상 동작입니다.</div>
+      <div class="note warn"><b>소급 적용 안내</b> — 배포 시점에 <b>기존에 제재 중인 유저도 한꺼번에 구매가 열립니다.</b></div>
       <table class="cmp">
         <thead><tr><th class="label">항목</th><th>내용</th></tr></thead>
         <tbody>
