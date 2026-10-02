@@ -49,7 +49,7 @@
   tbody tr:last-child td{border-bottom:none}
   td.label{font-weight:700;width:150px;background:#FBFCFD}
   td.tobe{background:#FEFBF6} td.tobe b{color:var(--buy)}
-  .strike{color:var(--ink-3);text-decoration:line-through}
+  .strike{color:var(--ink-3);}
   .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
   .badge.sell{color:var(--sell);background:var(--sell-bg)}
   .badge.stop{color:var(--stop);background:var(--stop-bg)}
@@ -131,9 +131,9 @@
         <table>
           <thead><tr><th class="label">기능</th><th class="asis">AS-IS</th><th class="tobe">TO-BE (이용 가능)</th></tr></thead>
           <tbody>
-            <tr><td class="label">구매 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">신규 대화·결제</span></td><td class="strike">제한</td><td class="tobe"><b>판매만 제한되는 경우 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매+구매 제한 유형은 구매 계속 제한)</span></td></tr>
-            <tr><td class="label">계정 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">찜·본인인증·SNS연동</span></td><td class="strike">제한</td><td class="tobe"><b>제한 범위와 무관하게 공통 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매만/판매+구매 모두)</span></td></tr>
-            <tr><td class="label">상품·후기 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">상품 삭제·후기 등록/수정</span></td><td class="strike">제한</td><td class="tobe"><b>제한 범위와 무관하게 공통 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매만/판매+구매 모두)</span></td></tr>
+            <tr><td class="label">구매 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">신규 대화·결제</span></td><td class="">제한</td><td class="tobe"><b>판매만 제한되는 경우 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매+구매 제한 유형은 구매 계속 제한)</span></td></tr>
+            <tr><td class="label">계정 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">찜·본인인증·SNS연동</span></td><td class="">제한</td><td class="tobe"><b>제한 범위와 무관하게 공통 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매만/판매+구매 모두)</span></td></tr>
+            <tr><td class="label">상품·후기 기능<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">상품 삭제·후기 등록/수정</span></td><td class="">제한</td><td class="tobe"><b>제한 범위와 무관하게 공통 이용 가능</b> <span style="color:var(--ink-3);font-size:12px">(판매만/판매+구매 모두)</span></td></tr>
           </tbody>
         </table>
         <div class="note">→ <b>구매 기능</b>은 판매만 제한 시 이용 가능, <b>계정 기능(찜·본인인증·SNS연동)·상품 삭제·후기 등록/수정</b>은 제한 범위와 상관없이 이용 가능해집니다. (무기한·영구 차단은 제외)</div>
@@ -146,11 +146,11 @@
         <table>
           <thead><tr><th class="label">항목</th><th class="asis">AS-IS</th><th class="tobe">TO-BE</th></tr></thead>
           <tbody>
-            <tr><td class="label">헤드라인<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">(판매만 제한)</span></td><td class="strike">{n}일간 이용이 제한되었어요</td><td class="tobe"><b>{n}일간 판매가 제한되었어요</b></td></tr>
+            <tr><td class="label">헤드라인<br><span style="font-weight:400;color:var(--ink-3);font-size:12px">(판매만 제한)</span></td><td class="">{n}일간 이용이 제한되었어요</td><td class="tobe"><b>{n}일간 판매가 제한되었어요</b></td></tr>
             <tr><td class="label">범위 안내</td><td>없음</td><td class="tobe"><b>&ldquo;찜·구매는 평소처럼 이용 가능&rdquo;</b> 추가</td></tr>
             <tr><td class="label">상점명 앞</td><td>(일시정지)</td><td class="tobe">판매만: <b>(판매제한)</b> / 전체: (일시정지)</td></tr>
             <tr><td class="label">과거 내역</td><td>탭 3개</td><td class="tobe"><b>하나로 통합</b></td></tr>
-            <tr><td class="label">알림 톤</td><td class="strike">…자동 탐지되었습니다</td><td class="tobe"><b>…확인되었어요</b></td></tr>
+            <tr><td class="label">알림 톤</td><td class="">…자동 탐지되었습니다</td><td class="tobe"><b>…확인되었어요</b></td></tr>
           </tbody>
         </table>
       </div></div>
